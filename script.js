@@ -1,6 +1,28 @@
 // Write your JavalerScript code here!
 
 window.addEventListener("load", function(){
+   let data = []
+   fetch( "https://handlers.education.launchcode.org/static/planets.json").then(function(response){
+      response.json().then(function(data){
+         console.log(data);
+         let destination = document.getElementById("missionTarget")
+         for (let i = 0; i<data.length; i++ ){
+            destination.innerHTML =
+              ` <ul>
+                <li>Name: ${data[i].name}</li>
+               <li>Diameter: ${data[i].diameter}</li>
+               <li>Star: ${data[i].star}</li>
+               <li>Distance from Earth: ${data[i].distance}</li>
+               <li>Number of Moons: ${data[i].moons}</li>
+                     </ul>
+                  <img class="avatar" src="${data[i].image}">
+                     </img>`
+         };
+         
+      });
+   });
+     
+   
    let statusCheck = document.getElementById("launchStatusCheck");
    let form =document.getElementById("launchForm");
    let pilotStatus = document.getElementById("pilotStatus");
@@ -26,8 +48,9 @@ window.addEventListener("load", function(){
      itemStatus.style.visibility = "visible"
      pilotStatus.innerHTML =`pilot: ${pilotInfo} is ready for launch`
      copilotStatus.innerHTML = `copilot: ${copilotInfo} is ready for launch`
-     cargoMass.innerHTML =  `Cargo check passed`
+     cargoMass.innerHTML =  ` Cargo check passed`
      fuelStatus.innerHTML = `Fuel level check passed`
+     launchStatus.style.color="green"
    };
      if (fuelLevelInfo <=9999){
         fuelStatus.innerHTML =`Insufficient Fuel`  
