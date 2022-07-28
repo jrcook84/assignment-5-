@@ -1,31 +1,35 @@
-// Write your JavaScript code here!
-let formNode=[]
+// Write your JavalerScript code here!
+
 window.addEventListener("load", function(){
    let statusCheck = document.getElementById("launchStatusCheck");
    let form =document.getElementById("launchForm");
-   // let pilotStatus = document.getElementById("pilotStatus");
-   // let copilotStatus = document.getElementById("copilotStatus");
-   // let fuelStatus = document.getElementById("fuelStatus");
-   // let cargoMass = document.getElementById("cargoMass");
-form.addEventListener("submit", function(event){
-   event.preventDefault();
-   let pilotInfo = document.querySelector("input[name=pilotName]");
-   let copilotInfo =document.querySelector("input[name=copilotName]");
-   let fuelLevelInfo =document.querySelector("input[name=fuelLevel]");
-   let cargoMassInfo =document.querySelector("input[name=cargoMass]");
-   if (pilotInfo.value===""||copilotInfo.value==="" || fuelLevelInfo.value===""||cargoMassInfo.value===""){
+   let pilotStatus = document.getElementById("pilotStatus");
+    let copilotStatus = document.getElementById("copilotStatus");
+    let fuelStatus = document.getElementById("fuelStatus");
+   let cargoMass = document.getElementById("cargoStatus");
+   form.addEventListener("submit", function(event){
+      event.preventDefault();
+      let itemStatus = document.getElementById("itemStatus");
+   let pilotInfo = document.querySelector("input[name=pilotName]").value;
+   let copilotInfo =document.querySelector("input[name=copilotName]").value;
+   let fuelLevelInfo =document.querySelector("input[name=fuelLevel]").value;
+   let cargoMassInfo =document.querySelector("input[name=cargoMass]").value;
+   if (pilotInfo===""||copilotInfo==="" || fuelLevelInfo===""||cargoMassInfo===""){
       alert("we arent going anywhere until you fill the forms in!!!");
-   }else if (isNaN(pilotInfo.value)===false||isNaN(copilotInfo)===false){
+   }else if (isNaN(pilotInfo)===false||isNaN(copilotInfo)===false){
       alert("Did your parents really name you a number")
-   }else if (isNaN(fuelLevelInfo.value)||isNaN(cargoMassInfo.value)){
+   }else if (isNaN(fuelLevelInfo)||isNaN(cargoMassInfo)){
       alert("Thats not a number, wierdo")
    }else{
-      //itemStatus.styles.visibility = "visible"
+     itemStatus.style.visibility = "visible"
       
-      formNode.push(pilotInfo.value, copilotInfo.value, fuelLevelInfo.value, cargoMassInfo.value);
-      for(let i = 0; i<formNode.length; i++){
-         launchStatusCheck.innerHTML+= formNode[i]
-      }
+      
+      
+         
+         pilotStatus.innerHTML =pilotInfo
+         copilotStatus.innerHTML = copilotInfo
+         fuelStatus.innerHTML = fuelLevelInfo
+         cargoMass.innerHTML =  cargoMassInfo
       
    }
 
