@@ -1,22 +1,33 @@
 // Write your JavaScript code here!
+let formNode=[]
 window.addEventListener("load", function(){
-let form =document.getElementById("launchForm");
+   let statusCheck = document.getElementById("launchStatusCheck");
+   let form =document.getElementById("launchForm");
+   // let pilotStatus = document.getElementById("pilotStatus");
+   // let copilotStatus = document.getElementById("copilotStatus");
+   // let fuelStatus = document.getElementById("fuelStatus");
+   // let cargoMass = document.getElementById("cargoMass");
 form.addEventListener("submit", function(event){
    event.preventDefault();
-   let pilotName = document.querySelector("input[name=pilotName]");
-   let copilotName =document.querySelector("input[name=copilotName]");
-   let fuelLevel =document.querySelector("input[name=fuelLevel]");
-   let cargoMass =document.querySelector("input[name=cargoMass]");
-   if (pilotName.value===""||copilotName.value==="" || fuelLevel.value===""||cargoMass.value===""){
+   let pilotInfo = document.querySelector("input[name=pilotName]");
+   let copilotInfo =document.querySelector("input[name=copilotName]");
+   let fuelLevelInfo =document.querySelector("input[name=fuelLevel]");
+   let cargoMassInfo =document.querySelector("input[name=cargoMass]");
+   if (pilotInfo.value===""||copilotInfo.value==="" || fuelLevelInfo.value===""||cargoMassInfo.value===""){
       alert("we arent going anywhere until you fill the forms in!!!");
-   }else if (isNaN(pilotName.value)===false||isNaN(copilotName)===false){
+   }else if (isNaN(pilotInfo.value)===false||isNaN(copilotInfo)===false){
       alert("Did your parents really name you a number")
-   }else if (isNaN(fuelLevel.value)||isNaN(cargoMass.value)){
+   }else if (isNaN(fuelLevelInfo.value)||isNaN(cargoMassInfo.value)){
       alert("Thats not a number, wierdo")
-     
-   
-      //let launchInfo=[pilotName,copilotName,fuelLevel,pilotName];
+   }else{
+      //itemStatus.styles.visibility = "visible"
+      
+      formNode.push(pilotInfo.value, copilotInfo.value, fuelLevelInfo.value, cargoMassInfo.value);
+      for(let i = 0; i<formNode.length; i++){
+         launchStatusCheck.innerHTML+= formNode[i]
       }
+      
+   }
 
 
 
