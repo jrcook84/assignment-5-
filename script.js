@@ -1,23 +1,27 @@
 // Write your JavalerScript code here!
-
+function randomizer(arr){
+   let index = Math.floor(Math.random()*arr.length);
+   return arr[index];
+}
 window.addEventListener("load", function(){
    let data = []
    fetch( "https://handlers.education.launchcode.org/static/planets.json").then(function(response){
       response.json().then(function(data){
-         console.log(data);
+      
          let destination = document.getElementById("missionTarget")
-         for (let i = 0; i<data.length; i++ ){
+            let missionDestination = randomizer(data);
+         
             destination.innerHTML =
               ` <ul>
-                <li>Name: ${data[i].name}</li>
-               <li>Diameter: ${data[i].diameter}</li>
-               <li>Star: ${data[i].star}</li>
-               <li>Distance from Earth: ${data[i].distance}</li>
-               <li>Number of Moons: ${data[i].moons}</li>
+                <li>Name: ${missionDestination.name}</li>
+               <li>Diameter: ${missionDestination.diameter}</li>
+               <li>Star: ${missionDestination.star}</li>
+               <li>Distance from Earth: ${missionDestination.distance}</li>
+               <li>Number of Moons: ${missionDestination.moons}</li>
                      </ul>
-                  <img class="avatar" src="${data[i].image}">
+                  <img class="avatar" src="${missionDestination.image}">
                      </img>`
-         };
+         
          
       });
    });
@@ -61,6 +65,8 @@ window.addEventListener("load", function(){
       launchStatus.innerHTML=`Shuttle not ready for Launch`
       launchStatus.style.color="red"
    };
+});
+});
 
 
 
@@ -87,17 +93,4 @@ window.addEventListener("load", function(){
 
 
 
-});
 
-});
-/* This block of code shows how to format the HTML once you fetch some planetary JSON!
-<h2>Mission Destination</h2>
-<ul>
-   <li>Name: ${}</li>
-   <li>Diameter: ${}</li>
-   <li>Star: ${}</li>
-   <li>Distance from Earth: ${}</li>
-   <li>Number of Moons: ${}</li>
-</ul>
-<img src="${}">
-*/
