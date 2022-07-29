@@ -7,25 +7,25 @@ window.addEventListener("load", function(){
    let data = []
    fetch( "https://handlers.education.launchcode.org/static/planets.json").then(function(response){
       response.json().then(function(data){
-      
          let destination = document.getElementById("missionTarget")
+         let missionDestination = randomizer(data);
+         
+         destination.innerHTML =
+         ` <ul>
+         <li>Name: ${missionDestination.name}</li>
+         <li>Diameter: ${missionDestination.diameter}</li>
+         <li>Star: ${missionDestination.star}</li>
+         <li>Distance from Earth: ${missionDestination.distance}</li>
+         <li>Number of Moons: ${missionDestination.moons}</li>
+         </ul>
+         <img class="avatar" src="${missionDestination.image}">
+         </img>`
+         let refreshButton= document.getElementById("refresh");
+         refreshButton.addEventListener("click", function(){
             let missionDestination = randomizer(data);
-         
-            destination.innerHTML =
-              ` <ul>
-                <li>Name: ${missionDestination.name}</li>
-               <li>Diameter: ${missionDestination.diameter}</li>
-               <li>Star: ${missionDestination.star}</li>
-               <li>Distance from Earth: ${missionDestination.distance}</li>
-               <li>Number of Moons: ${missionDestination.moons}</li>
-                     </ul>
-                  <img class="avatar" src="${missionDestination.image}">
-                     </img>`
-         
-         
       });
    });
-     
+});  
    
    let statusCheck = document.getElementById("launchStatusCheck");
    let form =document.getElementById("launchForm");
