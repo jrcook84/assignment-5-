@@ -44,24 +44,33 @@ window.addEventListener("load", function(){
    let cargoMassInfo =document.querySelector("input[name=cargoMass]").value;
    if (pilotInfo===""||copilotInfo==="" || fuelLevelInfo===""||cargoMassInfo===""){
       alert("we arent going anywhere until you fill the forms in!!!");
+      itemStatus.style.visibility = "hidden"
+      launchStatus.innerHTML=`Shuttle not ready for Launch`
+      launchStatus.style.color="red"
    }else if (isNaN(pilotInfo)===false||isNaN(copilotInfo)===false){
       alert("Did your parents really name you a number")
+      itemStatus.style.visibility = "hidden"
+      launchStatus.innerHTML=`Shuttle not ready for Launch`
+      launchStatus.style.color="red"
    }else if (isNaN(fuelLevelInfo)||isNaN(cargoMassInfo)){
       alert("Thats not a number, wierdo")
+      itemStatus.style.visibility = "hidden"
+      launchStatus.innerHTML=`Shuttle not ready for Launch`
+      launchStatus.style.color="red"
    }else{
-     itemStatus.style.visibility = "visible"
-     pilotStatus.innerHTML =`pilot: ${pilotInfo} is ready for launch`
-     copilotStatus.innerHTML = `copilot: ${copilotInfo} is ready for launch`
-     cargoMass.innerHTML =  ` Cargo check passed`
-     fuelStatus.innerHTML = `Fuel level check passed`
-     launchStatus.style.color="green"
-     launchStatus.innerHTML=`Buckle up, we are out of here `
+      pilotStatus.innerHTML =`pilot: ${pilotInfo} is ready for launch`
+      copilotStatus.innerHTML = `copilot: ${copilotInfo} is ready for launch`
+      cargoMass.innerHTML =  ` Cargo check passed`
+      fuelStatus.innerHTML = `Fuel level check passed`
+      launchStatus.style.color="green"
+      launchStatus.innerHTML=`Buckle up, we are out of here `
+      itemStatus.style.visibility = "visible"
    };
-     if (fuelLevelInfo <=9999){
-        fuelStatus.innerHTML =`Insufficient Fuel`  
-        launchStatus.innerHTML = `Shuttle not ready for Launch`
-        launchStatus.style.color="red"
-     }if (cargoMassInfo>=10001){
+   if (fuelLevelInfo <=9999){
+      fuelStatus.innerHTML =`Insufficient Fuel`  
+      launchStatus.innerHTML = `Shuttle not ready for Launch`
+      launchStatus.style.color="red"
+   }if (cargoMassInfo>=10001){
       cargoMass.innerHTML =  `Shuttle is to heavy, try a diet, or get rid of some stuff`
       launchStatus.innerHTML=`Shuttle not ready for Launch`
       launchStatus.style.color="red"
