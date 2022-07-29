@@ -55,6 +55,7 @@ window.addEventListener("load", function(){
      cargoMass.innerHTML =  ` Cargo check passed`
      fuelStatus.innerHTML = `Fuel level check passed`
      launchStatus.style.color="green"
+     launchStatus.innerHTML=`Buckle up, we are out of here `
    };
      if (fuelLevelInfo <=9999){
         fuelStatus.innerHTML =`Insufficient Fuel`  
